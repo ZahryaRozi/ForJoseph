@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You</title>
+    <link rel="stylesheet" href="./Resources/letter.css">
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="./Resources/Ed Sheeran - Perfect.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="sticker-container">
+        <img src="./Resources/legosticker.png" class="sticker s1" alt="sticker">
+        <img src="./Resources/LegoSticker2.png" class="sticker s2" alt="sticker">
+        <img src="./Resources/sticker3.webp" class="sticker s3" alt="sticker">
+        <img src="./Resources/Sticker4.webp" class="sticker s4" alt="sticker">
+        <img src="./Resources/sticker5.webp" class="sticker s5" alt="sticker">
+    </div>
+
+    <div class="emoji-rain" id="emojiLayer"></div>
+    
+    <main class="main-container">
+        <div class="floating-card">
+            <div class="letter-content">
+                <h2 class="letter-title">To My Dearest, Happy Birthday ❤️🎉</h2>
+                <p>
+                    Today I celebrate your life… and I also celebrate the day mine changed when I met you <br>
+                    It was something so simple, yet so special, that without realizing it, you became an important part of my heart 
+                </p>
+                <p>It has been beautiful getting to know you, discovering who you are, your way of seeing life, and those little details that make you unique <br> Thank you for every moment, every smile, and everything we have built together 🤗💫</p>
+                <p>On your birthday, I want you to know how much I value having you in my life. I wish for this new year to be full of blessings, joy, and dreams come true 🎂🌟 and I hope you allow me to continue being part of them 💕</p>
+                <p class="signature">I love you so much ❤️</p>
+                   <img src="./Resources/Panigale.png" class="moving-bike" alt="bike">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        document.addEventListener('touchstart', () => {
+            music.play();
+        }, { once: true });
+
+        const emojiLayer = document.getElementById('emojiLayer');
+        const emojis = ['❤️', '🎂', '✨', '💖', '🧁'];
+
+        function createEmoji() {
+            const div = document.createElement('div');
+            div.className = 'falling-emoji';
+            div.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            emojiLayer.appendChild(div);
+
+            setTimeout(() => { div.remove(); }, 5000);
+        }
+
+        setInterval(createEmoji, 300);
+    </script>
+
+ 
+</body>
+</html>

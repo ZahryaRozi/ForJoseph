@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories</title>
+    <link rel="stylesheet" href="./Resources/photos.css">
+</head>
+<body>
+
+    <div class="sticker-container">
+        <img src="./Resources/sticker3.webp" class="sticker s1" alt="sticker">
+        <img src="./Resources/Sticker4.webp" class="sticker s2" alt="sticker">
+        <img src="./Resources/sticker3.webp" class="sticker s3" alt="sticker">
+        <img src="./Resources/sticker6.webp" class="sticker s4" alt="sticker">
+        <img src="./Resources/legosticker.png" class="sticker s5" alt="sticker">
+    </div>
+
+    <main class="main-container">
+        <div class="floating-card">
+            <div class="horizontal-scroll">
+                <img src="./Resources/scrollImg1.jpg" alt="Memory 1">
+                <img src="./Resources/scrollimg2.jpg" alt="Memory 2">
+                <img src="./Resources/scrollimg3.jpg" alt="Memory 3">
+                <img src="./Resources/scrollimg4.jpg" alt="Memory 4">
+            </div>
+            <p class="scroll-hint"><a href="./letter.html">Click here for a few words! →</a></p>
+        </div>
+    </main>
+
+
+
+<script>
+        const scrollContainer = document.querySelector('.horizontal-scroll');
+        let scrollAmount = 0;
+        const speed = 1.5; // Adjust this number to make it faster or slower
+        let isMoving = true;
+
+        function autoScroll() {
+            if (isMoving) {
+                scrollAmount += speed;
+                if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+                    scrollAmount = 0; // Loop back to start
+                }
+                scrollContainer.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'auto'
+                });
+            }
+            requestAnimationFrame(autoScroll);
+        }
+
+        // Pause scrolling when user touches the screen
+        scrollContainer.addEventListener('touchstart', () => isMoving = false);
+        scrollContainer.addEventListener('touchend', () => {
+            scrollAmount = scrollContainer.scrollLeft; // Sync amount with manual position
+            isMoving = true;
+        });
+
+        autoScroll();
+    </script>
+
+</body>
+</html>
